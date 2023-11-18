@@ -1,0 +1,38 @@
+body{
+    background:url('../assets/images/polygon-scatter-haikei.svg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.bold{
+    font-weight: bold;
+}
+.italic{
+    font-style: italic;
+}
+
+h1,h2,h3,h4,h5,h6{
+    color: var(--primary);
+}
+
+#hero-section{
+    margin-top: -56px;
+    padding-top: 56px;
+    min-height: 100vh;
+    /* background: url('https://via.placeholder.com/1600x900') center no-repeat; */
+    /* background-size: cover; */
+    display: inline;
+
+}
+
+#hero-section-content-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: calc(100vh - 56px);
+}
+
+#hero-message h1{
+    font-size: 5rem;
+    font-weight: bold;
+}

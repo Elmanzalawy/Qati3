@@ -1,0 +1,12 @@
+// Default variable overrides
+//   $body-bg: #000;
+//   $body-color: #111;
+
+$primary: #6e46b9;
+$primary-dark: #422a6f;
+$dark: $primary-dark;
+$danger: #ff4136;
+// $success: red;
+
+
+@import "bootstrap/scss/bootstrap";
