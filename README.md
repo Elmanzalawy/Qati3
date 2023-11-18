@@ -1,4 +1,4 @@
-# Bloggr
+# Qati3
 
 ## Todo
 - [x] Implement Spatie Media Library
