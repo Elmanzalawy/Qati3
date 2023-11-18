@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Request;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -45,6 +46,7 @@ class AuthController extends Controller
             $insert_data = [
                 'provider'      => $provider,
                 'name'          => $socialUser->name,
+                'password'      => Str::random(8),
                 'password'      => bcrypt($socialUser->getId()),
                 'avatar' => $socialUser->avatar,
                 'locale' => $socialUser->user['locale'],
