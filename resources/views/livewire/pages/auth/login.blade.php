@@ -81,10 +81,13 @@ new #[Layout('layouts.app')] class extends Component
 
                     <x-checkbox wire:model="remember" name="remember" id="remember" text="{{ __('Remember me') }}"></x-checkbox>
 
-                    <button class="btn btn-primary" >{{ __('Log in') }}</button>
-
+                    <div class="d-block my-2">
+                        <button class="btn btn-primary" >{{ __('Log in') }}</button>
+                        <span class="ms-2">Don't have an account?</span>
+                        <a href="{{ route('register') }}">Register</a>
+                    </div>
                     @if (Route::has('password.request'))
-                        <a class="ms-2" href="{{ route('password.request') }}" wire:navigate>
+                        <a class="mt-5" href="{{ route('password.request') }}" wire:navigate>
                             {{ __('Forgot your password?') }}
                         </a>
                     @endif
