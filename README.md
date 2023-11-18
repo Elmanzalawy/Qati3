@@ -7,6 +7,7 @@
     - [x] Sign in using Socialite
 - ##### API
     - [ ] Sign in using email / password
+    - [] Sign in using Socialite
 
 ## Misc.
 - [x] Add [Spatie Media Library](https://spatie.be/docs/laravel-medialibrary/v10/introduction)
