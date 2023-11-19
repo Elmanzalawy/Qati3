@@ -5,9 +5,11 @@
 - ##### Web
     - [x] Sign in using email / password
     - [x] Sign in using Socialite
+    - [ ] Tests
 - ##### API
-    - [ ] Sign in using email / password
-    - [] Sign in using Socialite
+    - [x] Sign in using email / password
+    - [ ] Sign in using Socialite
+    - [x] Tests
 
 ## Misc.
 - [x] Add [Spatie Media Library](https://spatie.be/docs/laravel-medialibrary/v10/introduction)
