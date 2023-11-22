@@ -51,8 +51,9 @@ new #[Layout('layouts.app')] class extends Component
                     <button class="btn btn-primary" >{{ __('Register') }}</button>
 
                     @if (Route::has('password.request'))
-                        <a class="ms-2" href="{{ route('password.request') }}" wire:navigate>
-                            {{ __('Forgot your password?') }}
+                        <span class="ms-2">{{ __('Already have an account?') }}</span>
+                        <a href="{{ route('auth') }}" wire:navigate>
+                            {{ __('Login') }}
                         </a>
                     @endif
                 </div>

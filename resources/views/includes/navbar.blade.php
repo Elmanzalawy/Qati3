@@ -24,11 +24,7 @@
                     </div>
                 </div>
             @else
-                <a href="{{ route('login') }}" class="ms-2 btn btn-primary" wire:navigate>Login</a>
-
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="ml-4 ms-2 btn btn-outline-primary" wire:navigate>Register</a>
-                @endif
+                <a href="{{ route('auth') }}" class="ms-2 btn btn-primary" wire:navigate>{{ __('Login') }}</a>
             @endauth
         </div>
   </div>

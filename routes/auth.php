@@ -9,6 +9,9 @@ Route::middleware('guest')->group(function () {
     Volt::route('register', 'pages.auth.register')
         ->name('register');
 
+    Volt::route('auth', 'pages.auth.auth')
+        ->name('auth');
+
     Volt::route('login', 'pages.auth.login')
         ->name('login');
 
@@ -17,6 +20,11 @@ Route::middleware('guest')->group(function () {
 
     Volt::route('reset-password/{token}', 'pages.auth.reset-password')
         ->name('password.reset');
+
+    // SOCIALITE AUTH
+    Route::get('auth/{provider}', [AuthController::class, 'socialiteRedirect'])->name('auth.social_redirect');
+
+    Route::get('auth/{provider}/callback', [AuthController::class, 'socialiteCallback'])->name('auth.social_callback');
 });
 
 Route::middleware('auth')->group(function () {

@@ -63,7 +63,7 @@ new #[Layout('layouts.guest')] class extends Component
 }; ?>
 
 <div>
-    <form wire:submit="resetPassword">
+    {{-- <form wire:submit="resetPassword">
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
@@ -94,5 +94,5 @@ new #[Layout('layouts.guest')] class extends Component
                 {{ __('Reset Password') }}
             </x-primary-button>
         </div>
-    </form>
+    </form> --}}
 </div>
