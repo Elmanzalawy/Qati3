@@ -1,4 +1,4 @@
-# Qati3
+# Qati3 Development Roadmap
 
 ## Auth
 - [x] Add [Laravel Socialite](https://laravel.com/docs/10.x/socialite#introduction)

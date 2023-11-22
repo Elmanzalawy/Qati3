@@ -34,7 +34,7 @@ new class extends Component
     }
 }; ?>
 
-<section>
+{{-- <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
             {{ __('Update Password') }}
@@ -72,4 +72,4 @@ new class extends Component
             </x-action-message>
         </div>
     </form>
-</section>
+</section> --}}

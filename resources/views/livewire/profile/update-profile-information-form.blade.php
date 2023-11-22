@@ -55,7 +55,7 @@ new class extends Component
     }
 }; ?>
 
-<section>
+{{-- <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
             {{ __('Profile Information') }}
@@ -105,4 +105,4 @@ new class extends Component
             </x-action-message>
         </div>
     </form>
-</section>
+</section> --}}
