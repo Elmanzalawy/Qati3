@@ -15,9 +15,10 @@ return new class extends Migration
         Schema::create('brands', function (Blueprint $table) {
             $table->id();
             $table->json('name');
+            $table->string('slug');
             $table->json('description');
             $table->enum('boycott_status', array_keys(Brand::BOYCOTT_STATUSES))->default(0);
-            $table->unsignedTinyInteger('visibility')->default(0);
+            $table->unsignedTinyInteger('is_visible')->default(0);
             $table->unsignedBigInteger('parent_brand_id')->nullable();
             $table->foreign('parent_brand_id')->references('id')->on('brands');
             $table->date('established_at');

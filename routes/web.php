@@ -3,6 +3,7 @@
 use App\Livewire\Article\ArticleEditor;
 use App\Livewire\Article\ListArticles;
 use App\Livewire\Article\ViewArticle;
+use App\Livewire\Brand\BrandEditor;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,10 +28,17 @@ Route::view('profile', 'profile')
     ->name('profile');
 
 Route::middleware(['auth'])->group(function(){
-    Route::get('articles', ListArticles::class)->name('articles.index');
-    Route::get('articles/new', ArticleEditor::class)->name('articles.create');
-    Route::get('articles/{slug}', ViewArticle::class)->name('articles.show');
-    Route::get('articles/{slug}/edit', ArticleEditor::class)->name('articles.edit');
+    Route::group(['prefix' => 'brands', 'as' => 'brands.'], function(){
+        Route::get('new', BrandEditor::class)->name('create');
+    });
+
+
+    Route::group(['prefix' => 'articles', 'as' => 'articles.'], function(){
+        Route::get('', ListArticles::class)->name('index');
+        Route::get('new', ArticleEditor::class)->name('create');
+        Route::get('{slug}', ViewArticle::class)->name('show');
+        Route::get('{slug}/edit', ArticleEditor::class)->name('edit');
+    });
 });
 
 require __DIR__.'/auth.php';
