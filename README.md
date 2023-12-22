@@ -12,6 +12,9 @@
     - [x] Tests
 
 ## Brand
+- [ ] Add brands CRUD functionality
+- [ ] Add brands tests
+- [ ] Move brands validation and logic to BrandService
 
 ### brands table structure
 |column|type|notes|
