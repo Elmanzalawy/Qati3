@@ -1,5 +1,5 @@
 <div class="form-floating mb-3 {{ $attributes['class'] }}">
-    <input id="{{ $attributes['id'] }}" class="form-control @error($attributes['name']) is-invalid @enderror" {!! $attributes->merge() !!}>
+    <input id="{{ $attributes['id'] }}" class="form-control @error($attributes['name']) is-invalid @enderror" placeholder="{{ $attributes['placeholder'] ?? '' }}" {!! $attributes->merge() !!}>
     <label for="{{ $attributes['id'] }}">{{ $attributes['text'] }}</label>
     @error($attributes['name'])
     <ul>

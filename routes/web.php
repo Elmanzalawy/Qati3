@@ -30,6 +30,7 @@ Route::view('profile', 'profile')
 Route::middleware(['auth'])->group(function(){
     Route::group(['prefix' => 'brands', 'as' => 'brands.'], function(){
         Route::get('new', BrandEditor::class)->name('create');
+        Route::get('{slug}/edit', BrandEditor::class)->name('edit');
     });
 
 

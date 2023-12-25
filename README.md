@@ -20,8 +20,8 @@
 |column|type|notes|
 |-----|----|------|
 |id|unsignedBigInteger|PK|
-|name|longtext|JSON|
-|description|longtext|JSON|
+|name|json|We use json for multiple translations|
+|description|json|We use json for multiple translations|
 |boycott_status|enum|(0, 1, 2, 3) denoting `unknown`, `neutral`, `boycotted`, `supported` statuses respectively. Default (0)|
 |visibility|unsignedTinyInteger|boolean (0\|1) denoting brand visibility on web app and API, default (0) denoting `invisible`.|
 |parent_brand_id|unsignedBigInteger|PK referencing parent brand if applicable, nullable|

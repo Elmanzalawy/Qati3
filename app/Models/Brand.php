@@ -35,4 +35,16 @@ class Brand extends Model
         2 => self::BOYCOTT_STATUS_BOYCOTTED,
         3 => self::BOYCOTT_STATUS_SUPPORTED,
     ];
+
+    // parent brand
+    public function parent()
+    {
+        return $this->belongsTo(Brand::class, 'parent_id', 'id');
+    }
+
+    // child brands
+    public function subsidiaries()
+    {
+        return $this->hasMany(Brand::class, 'parent_id', 'id');
+    }
 }

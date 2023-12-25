@@ -27,9 +27,7 @@
             @isset($slot)
                 {{ $slot }}
             @endisset
-
         </div>
-
         @stack('js')
     </body>
 </html>

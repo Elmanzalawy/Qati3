@@ -13,10 +13,14 @@ return [
     |
     */
 
+    // FIELDS
     'name' => 'Name',
     'description' => 'Description',
     'visible' => 'Visible',
     'visibility' => 'Visibility',
     'boycott_status' => 'Boycott status',
     'established_at' => 'Established at',
+
+    // ACTIONS
+    'added' => 'Brand added successfully.',
 ];
