@@ -22,6 +22,10 @@ class Brand extends Model
         'established_at',
     ];
 
+    protected $casts = [
+        'is_visible' => 'boolean',
+    ];
+
     public $translatable = ['name', 'description'];
 
     public const BOYCOTT_STATUS_UNKNOWN = 'Unknown';

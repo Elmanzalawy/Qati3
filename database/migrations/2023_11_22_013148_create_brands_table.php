@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('slug');
             $table->json('description');
             $table->enum('boycott_status', array_keys(Brand::BOYCOTT_STATUSES))->default(0);
-            $table->unsignedTinyInteger('is_visible')->default(0);
+            $table->boolean('is_visible')->default(false);
             $table->unsignedBigInteger('parent_brand_id')->nullable();
             $table->foreign('parent_brand_id')->references('id')->on('brands');
             $table->date('established_at');

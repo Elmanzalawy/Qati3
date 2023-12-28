@@ -8,11 +8,14 @@ use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\WithFileUploads;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 
 class BrandEditor extends Component
 {
     use WithFileUploads;
+
+    public $action = 'create';
 
     public $lang = 'en';
 
@@ -28,18 +31,38 @@ class BrandEditor extends Component
 
     public $boycott_status_list;
 
+    public $parent_brand_id;
+
+    public $brandsList;
+
     public $established_at;
 
     public $logo;
 
-    protected $rules = [
-        'name' => 'required|string|min:2|unique:brands,name',
-        'description' => 'required|string|min:10',
-        'is_visible' => 'nullable|boolean',
-        'boycott_status' => 'required|numeric',
-        'logo' => 'required|image|max:1024',
-        'established_at' => 'required|date',
-    ];
+    public function rules()
+    {
+        return [
+            'name' => [
+                'required',
+                'string',
+                'min:2',
+                Rule::unique('brands', "name->{$this->lang}")->when($this->brand, function($q){
+                    $q->ignore($this->brand->id);
+                }),
+            ],
+            'description' => 'required|string|min:10',
+            'is_visible' => 'nullable|boolean',
+            'boycott_status' => 'required|numeric',
+            'logo' => [
+                Rule::requiredIf(!$this->brand),
+                'nullable',
+                'image',
+                'max:1024',
+            ],
+            'parent_brand_id' => 'nullable|numeric',
+            'established_at' => 'required|date',
+        ];
+    }
 
     /**
      * mount
@@ -50,14 +73,23 @@ class BrandEditor extends Component
     public function mount($slug = null): void
     {
         $this->boycott_status_list = Brand::BOYCOTT_STATUSES;
+        $this->brandsList = Brand::select('id', "name")->get();
 
         if($slug){
             $this->brand = Brand::where('slug', $slug)->firstOrFail();
-            $this->name = $this->brand->name;
-            $this->description = $this->brand->description;
-            $this->boycott_status = $this->brand->boycott_status;
-            $this->established_at = $this->brand->established_at;
-            $this->is_visible = (bool) $this->brand->is_visible;
+
+            $this->fill(
+                $this->brand->only(
+                    'name',
+                    'description',
+                    'boycott_status',
+                    'parent_brand_id',
+                    'established_at',
+                    'is_visible',
+                ),
+            );
+
+            $this->action = 'update';
         }
     }
 
@@ -70,21 +102,14 @@ class BrandEditor extends Component
     public function save(): void
     {
         try{
-            info($this->established_at);
             $this->validate();
-            $brand = new Brand([
-                'slug' => Str::slug($this->name),
-                'boycott_status' => $this->boycott_status,
-                'established_at' => $this->established_at,
-            ]);
-            $brand->setTranslations('name', [
-                $this->lang => $this->name,
-            ])->setTranslations('description', [
-                $this->lang => $this->description,
-            ])->save();
+            if($this->action == 'create'){
+                $this->create();
+            }else{
+                $this->update();
+            }
 
-            session()->flash('success', __('brand.added'));
-            redirect(route('brands.edit', $brand->slug));
+            redirect(route('brands.edit', $this->brand->slug));
         }
         catch(ValidationException $e){
             session()->flash('error', $e->getMessage());
@@ -94,5 +119,37 @@ class BrandEditor extends Component
             session()->flash('error', __('util.error'));
             throw $e; // needs to be caught by global exception handler
         }
+    }
+
+    public function create(): void
+    {
+        $this->brand = new Brand([
+            'slug' => Str::slug($this->name),
+            'boycott_status' => $this->boycott_status,
+            'is_visible' => $this->is_visible,
+            'established_at' => $this->established_at,
+        ]);
+        $this->brand->setTranslations('name', [
+            $this->lang => $this->name,
+        ])->setTranslations('description', [
+            $this->lang => $this->description,
+        ])->save();
+
+        session()->flash('success', __('brand.added'));
+    }
+
+    public function update(): void
+    {
+        $this->brand->slug = Str::slug($this->name);
+        $this->brand->boycott_status = $this->boycott_status;
+        $this->brand->is_visible = $this->is_visible;
+        $this->brand->established_at = $this->established_at;
+        $this->brand->setTranslations('name', [
+                $this->lang => $this->name,
+            ])->setTranslations('description', [
+                $this->lang => $this->description,
+            ])->save();
+
+        session()->flash('success', __('brand.updated'));
     }
 }

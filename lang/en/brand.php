@@ -19,8 +19,10 @@ return [
     'visible' => 'Visible',
     'visibility' => 'Visibility',
     'boycott_status' => 'Boycott status',
+    'parent_brand' => 'Parent brand',
     'established_at' => 'Established at',
 
     // ACTIONS
     'added' => 'Brand added successfully.',
+    'updated' => 'Brand updated successfully.',
 ];

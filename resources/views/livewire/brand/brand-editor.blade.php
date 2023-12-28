@@ -1,4 +1,5 @@
 <div class="container pt-4">
+    @include('includes.messages')
     <div class="mb-3 d-flex align-items-center">
         <h2 class="text-dark d-inline-block">{{ $brand->name ?? 'Add new brand' }}
         </h2>
@@ -43,9 +44,17 @@
                         </x-select>
                     </div>
                     <div class="my-2">
+                        <x-select id='parent-brand-id' wire:model='parent_brand_id' name='parent_brand_id' label="{{ __('brand.parent_brand') }}" required>
+                            <option value="" class="text-muted">Select parent brand..</option>
+                            @foreach ($brandsList as $brandEntry)
+                                <option value="{{ $brandEntry->id }}">{{ $brandEntry->name}}</option>
+                            @endforeach
+                        </x-select>
+                    </div>
+                    <div class="my-2">
                         {{-- <x-file-input name="logo" wire:model.live="logo"></x-file-input> --}}
                         <label for="logo" class="form-label">Logo</label>
-                        <input id="logo" class="form-control" name="logo" wire:model.live="logo" type="file">
+                        <input id="logo" class="form-control @error('logo') is-invalid @enderror" name="logo" wire:model.live="logo" type="file">
                         @if($logo)
                             @if(get_class($logo) == 'Livewire\Features\SupportFileUploads\TemporaryUploadedFile' && $logo->exists())
                                 <img class="w-100 mt-3" src="{{ $logo->temporaryUrl() }}" alt="">
@@ -63,11 +72,7 @@
                         </ul>
                         @enderror
                     </div>
-                    <div class="form-check form-switch checkbox-lg mt-3">
-                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" value='1'
-                            wire:model="is_visible" checked>
-                        <label class="form-check-label" for="flexSwitchCheckChecked">{{ __('brand.visible') }}</label>
-                    </div>
+                    <x-checkbox class="form-switch checkbox-lg mt-3" wire:model="is_visible" name="is_visible" id="flexSwitchCheckChecked" text="{{ __('brand.visible') }}"></x-checkbox>
                 </div>
                 <div class="card-footer d-flex justify-content-between">
                     <button class="btn btn-primary" wire:loading.class='disabled' wire:click="save()">Save</button>
