@@ -135,6 +135,8 @@ class BrandEditor extends Component
             $this->lang => $this->description,
         ])->save();
 
+        $this->brand->addMedia($this->logo)->toMediaCollection();
+
         session()->flash('success', __('brand.added'));
     }
 
@@ -150,6 +152,11 @@ class BrandEditor extends Component
                 $this->lang => $this->description,
             ])->save();
 
+
+        if($this->logo){
+            // Replace old logo with new logo
+            $this->brand->clearMediaCollection()->addMedia($this->logo)->toMediaCollection();
+        }
         session()->flash('success', __('brand.updated'));
     }
 }

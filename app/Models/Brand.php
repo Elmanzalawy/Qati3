@@ -4,13 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Image\Manipulations;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Translatable\HasTranslations;
 
-class Brand extends Model
+class Brand extends Model implements HasMedia
 {
-    use HasFactory;
-
-    use HasTranslations;
+    use HasFactory, InteractsWithMedia, HasTranslations, SoftDeletes;
 
     protected $fillable = [
         'name',
@@ -39,6 +42,19 @@ class Brand extends Model
         2 => self::BOYCOTT_STATUS_BOYCOTTED,
         3 => self::BOYCOTT_STATUS_SUPPORTED,
     ];
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this
+            ->addMediaConversion('preview')
+            ->fit(Manipulations::FIT_CROP, 300, 300)
+            ->nonQueued();
+    }
+
+    public function getLogoAttribute()
+    {
+        return $this->getFirstMedia()->getUrl('preview');
+    }
 
     // parent brand
     public function parent()

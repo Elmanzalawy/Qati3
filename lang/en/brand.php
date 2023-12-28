@@ -14,7 +14,7 @@ return [
     */
 
     // FIELDS
-    'name' => 'Name',
+    'name' => 'Brand name',
     'description' => 'Description',
     'visible' => 'Visible',
     'visibility' => 'Visibility',
