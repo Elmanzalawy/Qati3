@@ -1,7 +1,8 @@
 body{
-    background:url('../assets/images/polygon-scatter-haikei.svg');
+    background:url('../assets/images/palestinian-keffiyeh-pattern.jpg') no-repeat center,rgb(231, 231, 231);
     background-size: cover;
     background-attachment: fixed;
+    background-blend-mode: lighten;
 }
 
 .bold{
