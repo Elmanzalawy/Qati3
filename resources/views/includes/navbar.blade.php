@@ -1,8 +1,7 @@
 <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top">
       <div class="container">
         <a class="navbar-brand" href="{{ route('index') }}" wire:navigate>
-        <img src="{{ asset('assets/images/qati3-logo.svg') }}" alt="">
-
+            <img src="{{ asset('assets/images/qati3-logo.svg') }}" alt="">
         </a>
         <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
             aria-expanded="false" aria-label="Toggle navigation">

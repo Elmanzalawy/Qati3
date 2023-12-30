@@ -15,6 +15,8 @@ return [
 
     // FIELDS
     'name' => 'Brand name',
+    'name_en' => 'Brand name (En)',
+    'name_ar' => 'Brand name (Ar)',
     'description' => 'Description',
     'visible' => 'Visible',
     'visibility' => 'Visibility',

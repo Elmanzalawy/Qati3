@@ -3,6 +3,7 @@
 namespace App\Livewire\Brand;
 
 use App\Models\Brand;
+use App\Services\LocaleService;
 use Illuminate\Contracts\View\View;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -15,15 +16,21 @@ class BrandEditor extends Component
 {
     use WithFileUploads;
 
+    public $locale_list;
+
     public $action = 'create';
 
     public $lang = 'en';
 
     public $brand;
 
-    public $name;
+    public $name_en;
 
-    public $description;
+    public $name_ar;
+
+    public $description_en;
+
+    public $description_ar;
 
     public $is_visible;
 
@@ -42,15 +49,27 @@ class BrandEditor extends Component
     public function rules()
     {
         return [
-            'name' => [
+            'name_en' => [
                 'required',
                 'string',
                 'min:2',
-                Rule::unique('brands', "name->{$this->lang}")->when($this->brand, function($q){
+                // Rule::unique('brands', "name->{$this->lang}")->when($this->brand, function($q){
+                //     $q->ignore($this->brand->id);
+                // }),
+                Rule::unique('brands', "name->en")->when($this->brand, function($q){
                     $q->ignore($this->brand->id);
                 }),
             ],
-            'description' => 'required|string|min:10',
+            'name_ar' => [
+                'required',
+                'string',
+                'min:2',
+                Rule::unique('brands', "name->ar")->when($this->brand, function($q){
+                    $q->ignore($this->brand->id);
+                }),
+            ],
+            'description_en' => 'nullable|string|min:10',
+            'description_ar' => 'nullable|string|min:10',
             'is_visible' => 'nullable|boolean',
             'boycott_status' => 'required|numeric',
             'logo' => [
@@ -72,22 +91,37 @@ class BrandEditor extends Component
      */
     public function mount($slug = null): void
     {
+        $this->locale_list = LocaleService::LOCALE_LIST;
         $this->boycott_status_list = Brand::BOYCOTT_STATUSES;
         $this->brandsList = Brand::select('id', "name")->get();
 
         if($slug){
             $this->brand = Brand::where('slug', $slug)->firstOrFail();
 
-            $this->fill(
-                $this->brand->only(
-                    'name',
-                    'description',
+            $name = $this->brand->getTranslations('name');
+            $description = $this->brand->getTranslations('description');
+            $this->fill([
+                'name_en' => $name['en'],
+                'name_ar' => $name['ar'],
+                'description_en' => $description['en'] ?? null,
+                'description_ar' => $description['ar'] ?? null,
+                ...$this->brand->only(
                     'boycott_status',
                     'parent_brand_id',
                     'established_at',
                     'is_visible',
                 ),
-            );
+            ]);
+            // $this->fill(
+            //     $this->brand->only(
+            //         'name_en' => 'name->en',
+            //         'description',
+            //         'boycott_status',
+            //         'parent_brand_id',
+            //         'established_at',
+            //         'is_visible',
+            //     ),
+            // );
 
             $this->action = 'update';
         }
@@ -124,15 +158,18 @@ class BrandEditor extends Component
     public function create(): void
     {
         $this->brand = new Brand([
-            'slug' => Str::slug($this->name),
+            'slug' => Str::slug($this->name_en),
             'boycott_status' => $this->boycott_status,
             'is_visible' => $this->is_visible,
+            'parent_brand_id' => $this->parent_brand_id,
             'established_at' => $this->established_at,
         ]);
         $this->brand->setTranslations('name', [
-            $this->lang => $this->name,
+            'en' => $this->name_en,
+            'ar' => $this->name_ar,
         ])->setTranslations('description', [
-            $this->lang => $this->description,
+            'en' => $this->description_en,
+            'ar' => $this->description_ar,
         ])->save();
 
         $this->brand->addMedia($this->logo)->toMediaCollection();
@@ -142,14 +179,17 @@ class BrandEditor extends Component
 
     public function update(): void
     {
-        $this->brand->slug = Str::slug($this->name);
+        $this->brand->slug = Str::slug($this->name_en);
         $this->brand->boycott_status = $this->boycott_status;
         $this->brand->is_visible = $this->is_visible;
         $this->brand->established_at = $this->established_at;
+        $this->brand->parent_brand_id = $this->parent_brand_id;
         $this->brand->setTranslations('name', [
-                $this->lang => $this->name,
+                'en' => $this->name_en,
+                'ar' => $this->name_ar,
             ])->setTranslations('description', [
-                $this->lang => $this->description,
+                'en' => $this->description_en,
+                'ar' => $this->description_ar,
             ])->save();
 
 
