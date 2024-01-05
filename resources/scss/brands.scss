@@ -1,0 +1,22 @@
+.brand-card{
+    position: relative;
+
+    .logo-wrapper{
+        position: relative;
+    }
+
+    a{
+        text-decoration: none;
+    }
+}
+.brand-card:hover{
+    a{
+        text-decoration: underline;
+    }
+}
+
+.boycott-status-pill{
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+}

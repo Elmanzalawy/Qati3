@@ -13,6 +13,9 @@ return [
     |
     */
 
+    'brand' => 'Brand',
+    'brands' => 'Brands',
+
     // FIELDS
     'name' => 'Brand name',
     'name_en' => 'Brand name (En)',
