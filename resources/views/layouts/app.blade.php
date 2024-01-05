@@ -29,5 +29,6 @@
             @endisset
         </div>
         @stack('js')
+        <script src="https://kit.fontawesome.com/741cf69b55.js" crossorigin="anonymous"></script>
     </body>
 </html>

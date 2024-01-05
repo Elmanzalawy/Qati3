@@ -53,7 +53,7 @@ class Brand extends Model implements HasMedia
 
     public function getLogoAttribute()
     {
-        return $this->getFirstMedia()->getUrl('preview');
+        return $this->getFirstMedia()?->getUrl('preview') ?? null;
     }
 
     // parent brand
@@ -66,5 +66,15 @@ class Brand extends Model implements HasMedia
     public function subsidiaries()
     {
         return $this->hasMany(Brand::class, 'parent_id', 'id');
+    }
+
+    public function getBoycottStatusStringAttribute()
+    {
+        return self::BOYCOTT_STATUSES[$this->boycott_status];
+    }
+
+    public function scopeVisible()
+    {
+        return $this->where('is_visible', true);
     }
 }

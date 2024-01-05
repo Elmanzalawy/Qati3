@@ -4,6 +4,7 @@ use App\Livewire\Article\ArticleEditor;
 use App\Livewire\Article\ListArticles;
 use App\Livewire\Article\ViewArticle;
 use App\Livewire\Brand\BrandEditor;
+use App\Livewire\Brand\ListBrands;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,7 @@ Route::view('profile', 'profile')
 
 Route::middleware(['auth'])->group(function(){
     Route::group(['prefix' => 'brands', 'as' => 'brands.'], function(){
+        Route::get('', ListBrands::class)->name('index');
         Route::get('new', BrandEditor::class)->name('create');
         Route::get('{slug}/edit', BrandEditor::class)->name('edit');
     });
