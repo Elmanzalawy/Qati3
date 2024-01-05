@@ -13,6 +13,7 @@
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^3.0",
         "livewire/volt": "^1.0",
+        "ryangjchandler/blade-cache-directive": "^0.4.0",
         "spatie/laravel-medialibrary": "^10.13",
         "spatie/laravel-permission": "^6.1",
         "spatie/laravel-translatable": "^6.5"
