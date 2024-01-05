@@ -12,7 +12,9 @@
     - [x] Tests
 
 ## Brand
-- [ ] Add brands CRUD functionality
+- [x] Add brands CRUD functionality
+- [x] Add brands list
+- [ ] Add brand show view
 - [ ] Add brands tests
 - [ ] Move brands validation and logic to BrandService
 
