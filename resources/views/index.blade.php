@@ -11,8 +11,8 @@
 <div id="hero-section">
     <div id="hero-section-content-wrapper" class="container">
         <div id="hero-message" class="text-center text-dark my-5">
-            <h1>{{env('APP_NAME')}}</h1>
-            <h5 class="mt-4">No justice, no profit</h5>
+            <object height="60" data="{{ asset('assets/images/qati3-logo.svg') }}" type="image/svg+xml"></object>
+            <h5 class="mt-4 bold text-gradient">NO JUSTICE, NO PROFIT.</h5>
         </div>
 
         <div id="latest-posts" class="row gx-5 d-flex align-items-stretch">
