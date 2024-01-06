@@ -15,6 +15,9 @@ return [
 
     'brand' => 'Brand',
     'brands' => 'Brands',
+    'subsidiaries' => 'Subsidiaries',
+    'subsidiary_of' => "Subsidiary of",
+    'established_on' => "Established on :date",
 
     // FIELDS
     'name' => 'Brand name',

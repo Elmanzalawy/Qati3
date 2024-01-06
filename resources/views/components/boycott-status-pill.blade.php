@@ -1,4 +1,4 @@
-<div class="boycott-status-pill {{ $attributes['class'] }}" {{ $attributes->merge()->except(['class']) }}>
+<div class="boycott-status-pill {{ $attributes['class'] }}" {{ $attributes->merge()->except(['class']) }} title="{{ __("brand.boycott_status") }}">
     @switch($brand->boycott_status_string)
         @case($brand::BOYCOTT_STATUS_UNKNOWN)
             <span class="badge rounded-pill bg-secondary">{{ $brand->boycott_status_string }}</span>

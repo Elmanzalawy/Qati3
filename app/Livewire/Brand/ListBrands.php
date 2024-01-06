@@ -42,7 +42,7 @@ class ListBrands extends Component
         array_push($this->brands, ...Brand::select('id', 'name', 'slug', 'boycott_status')
             ->visible()
             ->when($this->s, function($q){
-                $q->where('name', 'LIKE', "%{$this->s}%");
+                $q->whereRaw('LOWER(name) LIKE ?', ['%' . strtolower($this->s) . '%']);
             })
             ->skip($this->page - 1)
             ->take(self::PER_PAGE)

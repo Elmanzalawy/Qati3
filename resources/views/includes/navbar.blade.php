@@ -8,13 +8,13 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavId">
-            <div class="nav-item">
+            <div class="nav-item me-auto">
                 <a class="nav-link" href="{{ route('brands.index') }}" wire:navigate>{{ __('brand.brands') }}</a>
             </div>
-            <form class="d-flex ms-auto my-2 my-lg-0">
+            {{-- <form class="d-flex ms-auto my-2 my-lg-0">
                 <input class="form-control me-sm-2" type="text" placeholder="Search">
                 <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            </form> --}}
 
             @auth
                 <div class="nav-item dropdown ms-2">
@@ -25,7 +25,7 @@
                     </div>
                 </div>
             @else
-                <a href="{{ route('auth') }}" class="ms-2 btn btn-primary" wire:navigate>{{ __('Login') }}</a>
+                <a href="{{ route('auth') }}" class="my-2 my-sm-0 btn btn-primary" wire:navigate>{{ __('Login') }}</a>
             @endauth
         </div>
   </div>

@@ -12,9 +12,13 @@ body{
     font-style: italic;
 }
 
+a{
+    text-decoration: none;
+}
+
 .text-gradient{
     color: transparent;
-    background: linear-gradient(45deg, var(--bs-primary), var(--bs-danger));
+    background: linear-gradient(120deg, var(--bs-primary), var(--bs-danger));
     background-clip: text;
 }
 

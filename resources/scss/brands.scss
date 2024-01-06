@@ -8,6 +8,12 @@
     a{
         text-decoration: none;
     }
+
+    .boycott-status-pill{
+        position: absolute;
+        bottom: 1rem;
+        left: 1rem;
+    }
 }
 .brand-card:hover{
     a{
@@ -15,8 +21,3 @@
     }
 }
 
-.boycott-status-pill{
-    position: absolute;
-    bottom: 1rem;
-    left: 1rem;
-}

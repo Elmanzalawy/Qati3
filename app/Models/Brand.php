@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Carbon;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -59,13 +60,18 @@ class Brand extends Model implements HasMedia
     // parent brand
     public function parent()
     {
-        return $this->belongsTo(Brand::class, 'parent_id', 'id');
+        return $this->belongsTo(Brand::class, 'parent_brand_id', 'id');
     }
 
     // child brands
     public function subsidiaries()
     {
-        return $this->hasMany(Brand::class, 'parent_id', 'id');
+        return $this->hasMany(Brand::class, 'parent_brand_id', 'id');
+    }
+
+    public function hasSubsidiaries()
+    {
+        return $this->subsidiaries->count() > 0;
     }
 
     public function getBoycottStatusStringAttribute()
@@ -73,8 +79,18 @@ class Brand extends Model implements HasMedia
         return self::BOYCOTT_STATUSES[$this->boycott_status];
     }
 
+    public function getEstablishmentYearAttribute()
+    {
+        return date('Y', strtotime($this->established_at));
+    }
+
     public function scopeVisible()
     {
         return $this->where('is_visible', true);
+    }
+
+    public static function findBySlug($slug)
+    {
+        return self::where('slug', $slug)->first();
     }
 }
