@@ -1,8 +1,11 @@
 @section('css')
 @vite(['resources/scss/brands.scss'])
 @endsection
-<div class="container pt-5">
-    <h1 class="text-dark mb-4">{{ __('brand.brands') }}</h1>
+<div class="container pt-4">
+    <div class="d-flex align-items-center">
+        <h1 class="text-dark">{{ __('brand.brands') }}</h1>
+        <a href="{{ route('brands.create') }}" class="ms-auto btn btn-outline-primary">{{ __('brand.add') }}</a>
+    </div>
     <div id="brands-filters-row" class=" d-flex flex-row justify-content-between my-2 mb-4">
         <span>
             <object class="icon-inactive" data="{{ asset('assets/icons/filter.svg') }}" type="image/svg+xml"></object>

@@ -28,17 +28,20 @@
                         </div>
                     </div>
                     <hr>
-                    <div id="brand-description-wrapper" class="my-3">
-                        <h4>Description</h4>
+                    <div id="brand-description-wrapper">
+                        <h4 class="text-dark my-3">{{ __('brand.description') }}</h4>
                         {!! $brand->description !!}
                     </div>
 
                     @if($brand->hasSubsidiaries())
+                    <hr>
                     <div id="subsidiaries-wrapper">
-                        <h4 class="text-dark">{{ __('brand.subsidiaries') }}</h4>
-                        @foreach ($brand->subsidiaries as $subsidiary)
-                            <x-brand.brand-card class="mx-3" :brand="$subsidiary"></x-brand.brand-card>
-                        @endforeach
+                        <h4 class="text-dark my-3">{{ __('brand.subsidiaries') }}</h4>
+                        <div class="row">
+                            @foreach ($brand->subsidiaries as $subsidiary)
+                            <x-brand.brand-card class="col-6 col-md-3 mb-3 mt-sm-0" :brand="$subsidiary"></x-brand.brand-card>
+                            @endforeach
+                        </div>
                     </div>
                     @endif
                 </div>

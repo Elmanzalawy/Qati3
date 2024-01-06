@@ -41,6 +41,7 @@ class ListBrands extends Component
     {
         array_push($this->brands, ...Brand::select('id', 'name', 'slug', 'boycott_status')
             ->visible()
+            ->orderBy('id', 'desc')
             ->when($this->s, function($q){
                 $q->whereRaw('LOWER(name) LIKE ?', ['%' . strtolower($this->s) . '%']);
             })

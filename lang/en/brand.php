@@ -31,6 +31,7 @@ return [
     'established_at' => 'Established at',
 
     // ACTIONS
+    'add' => 'Add brand',
     'added' => 'Brand added successfully.',
     'updated' => 'Brand updated successfully.',
 ];
