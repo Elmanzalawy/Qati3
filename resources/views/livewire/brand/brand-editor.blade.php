@@ -2,7 +2,7 @@
     @include('includes.messages')
     <div class="mb-3 d-flex align-items-center">
         <a href="{{ route('brands.index') }}">
-            <h3 class="text-dark ">&larr; Brands</h3>
+            <h3 class="text-dark ">&larr; {{ __('brand.brands') }}</h3>
         </a>
         @if($brand && !$brand->is_visible)
             <span class="ms-2 badge text-bg-secondary">Draft</span>

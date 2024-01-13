@@ -11,6 +11,10 @@
     - [ ] Sign in using Socialite
     - [x] Tests
 
+## Category
+- [ ] Add categories CRUD functionality with validation
+- [ ] Add categories tests
+
 ## Brand
 - [x] Add brands CRUD functionality
 - [x] Add brands list

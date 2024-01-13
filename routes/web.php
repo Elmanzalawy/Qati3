@@ -6,6 +6,9 @@ use App\Livewire\Article\ViewArticle;
 use App\Livewire\Brand\BrandEditor;
 use App\Livewire\Brand\ListBrands;
 use App\Livewire\Brand\ViewBrand;
+use App\Livewire\Category\CategoryEditor;
+use App\Livewire\Category\ListCategories;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,6 +52,12 @@ Route::group(['prefix' => 'brands', 'as' => 'brands.'], function () {
 Route::group(['prefix' => 'articles', 'as' => 'articles.'], function () {
     Route::get('', ListArticles::class)->name('index');
     Route::get('{slug}', ViewArticle::class)->name('show');
+});
+
+Route::group(['prefix' => 'categories', 'as' => 'categories.'], function () {
+    Route::get('', ListCategories::class)->name('index');
+    Route::get('new', CategoryEditor::class)->name('create');
+    Route::get('{slug}/edit', CategoryEditor::class)->name('edit');
 });
 
 require __DIR__.'/auth.php';
