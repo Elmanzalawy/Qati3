@@ -31,19 +31,24 @@ Route::view('profile', 'profile')
 
 Route::middleware(['auth'])->group(function(){
     Route::group(['prefix' => 'brands', 'as' => 'brands.'], function(){
-        Route::get('', ListBrands::class)->name('index');
         Route::get('new', BrandEditor::class)->name('create');
-        Route::get('{slug}', ViewBrand::class)->name('show');
         Route::get('{slug}/edit', BrandEditor::class)->name('edit');
     });
 
-
     Route::group(['prefix' => 'articles', 'as' => 'articles.'], function(){
         Route::get('', ListArticles::class)->name('index');
-        Route::get('new', ArticleEditor::class)->name('create');
         Route::get('{slug}', ViewArticle::class)->name('show');
-        Route::get('{slug}/edit', ArticleEditor::class)->name('edit');
     });
+});
+
+Route::group(['prefix' => 'brands', 'as' => 'brands.'], function () {
+    Route::get('', ListBrands::class)->name('index');
+    Route::get('{slug}', ViewBrand::class)->name('show');
+});
+
+Route::group(['prefix' => 'articles', 'as' => 'articles.'], function () {
+    Route::get('', ListArticles::class)->name('index');
+    Route::get('{slug}', ViewArticle::class)->name('show');
 });
 
 require __DIR__.'/auth.php';
