@@ -6,7 +6,7 @@
         </div>
         <div class="brand-card-header d-flex justify-content-between align-items-center">
             <h5 class="bold text-dark mt-2">{{ $brand->name }}</h5>
-            <i class="fas fa-info-circle text-secondary" data-toggle="tooltip" data-placement="top" title="tooltip"></i>
+            {{-- <i class="fas fa-info-circle text-secondary" data-toggle="tooltip" data-placement="top" title="tooltip"></i> --}}
         </div>
 
     </a>

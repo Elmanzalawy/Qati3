@@ -1,8 +1,9 @@
 <div class="container pt-4">
     @include('includes.messages')
     <div class="mb-3 d-flex align-items-center">
-        <h2 class="text-dark d-inline-block">{{ $brand->name ?? 'Add new brand' }}
-        </h2>
+        <a href="{{ route('brands.index') }}">
+            <h3 class="text-dark ">&larr; Brands</h3>
+        </a>
         @if($brand && !$brand->is_visible)
             <span class="ms-2 badge text-bg-secondary">Draft</span>
         @endif
