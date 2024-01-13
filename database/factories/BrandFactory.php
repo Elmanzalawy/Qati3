@@ -21,7 +21,6 @@ class BrandFactory extends Factory
         return [
             'name' => [
                 'en' => $nameEn = fake()->sentence(),
-                'en' => $nameEn = fake()->sentence(),
                 'ar' => fake()->sentence(),
             ],
             'description' => [
