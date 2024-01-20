@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('css')
+@push('css')
     <style>
 
 
     </style>
-@endsection
+@endpush
 
 @section('content')
 <div id="hero-section">

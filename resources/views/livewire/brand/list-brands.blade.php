@@ -1,6 +1,6 @@
-@section('css')
+@push('css')
 @vite(['resources/scss/brands.scss'])
-@endsection
+@endpush
 <div class="container pt-4">
     <div class="d-flex align-items-center">
         <h2 class="text-dark">{{ __('brand.brands') }}</h2>

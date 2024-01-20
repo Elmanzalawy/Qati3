@@ -1,6 +1,6 @@
-@section('css')
+@push('css')
 
-@endsection
+@endpush
 <div class="container pt-3">
     <div class="d-flex align-items-center">
         <h2 class="text-dark">{{ __('category.categories') }}</h2>
