@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Models\Brand;
-use App\Http\Requests\StoreBrandRequest;
-use App\Http\Requests\UpdateBrandRequest;
+use App\Models\Category;
+use App\Http\Requests\StoreCategoryRequest;
+use App\Http\Requests\UpdateCategoryRequest;
 
-class BrandController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class BrandController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreBrandRequest $request)
+    public function store(StoreCategoryRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class BrandController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Brand $brand)
+    public function show(Category $category)
     {
         //
     }
@@ -43,7 +43,7 @@ class BrandController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Brand $brand)
+    public function edit(Category $category)
     {
         //
     }
@@ -51,7 +51,7 @@ class BrandController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateBrandRequest $request, Brand $brand)
+    public function update(UpdateCategoryRequest $request, Category $category)
     {
         //
     }
@@ -59,7 +59,7 @@ class BrandController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Brand $brand)
+    public function destroy(Category $category)
     {
         //
     }
