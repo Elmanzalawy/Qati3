@@ -1,5 +1,5 @@
 <div class="brand-card {{ $attributes['class'] }}">
-    <a href="{{ route('brands.show', $brand->slug) }}">
+    <a href="{{ route('brands.show', $brand->slug) }}" wire:navigate>
         <div class="logo-wrapper">
             <img src="{{ $brand->logo }}" alt="" class="w-100">
             <x-boycott-status-pill :brand="$brand"></x-boycott-status-pill>

@@ -1,7 +1,7 @@
 <div class="container pt-4">
     @include('includes.messages')
     <div class="mb-3 d-flex align-items-center">
-        <a href="{{ route('categories.index') }}">
+        <a href="{{ route('categories.index') }}" wire:navigate>
             <h3 class="text-dark ">&larr; {{ __('category.categories') }}</h3>
         </a>
     </div>

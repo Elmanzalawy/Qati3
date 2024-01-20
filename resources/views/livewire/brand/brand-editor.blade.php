@@ -1,7 +1,7 @@
 <div class="container pt-4">
     @include('includes.messages')
     <div class="mb-3 d-flex align-items-center">
-        <a href="{{ route('brands.index') }}">
+        <a href="{{ route('brands.index') }}" wire:navigate>
             <h3 class="text-dark ">&larr; {{ __('brand.brands') }}</h3>
         </a>
         @if($brand && !$brand->is_visible)

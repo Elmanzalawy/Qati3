@@ -15,20 +15,14 @@ return [
 
     'category' => 'Category',
     'categories' => 'Categories',
-    'subsidiaries' => 'Subsidiaries',
-    'subsidiary_of' => "Subsidiary of",
-    'established_on' => "Established on :date",
+    'number_of_brands' => 'Number of brands',
 
     // FIELDS
     'name' => 'Category name',
     'name_en' => 'Category name (En)',
     'name_ar' => 'Category name (Ar)',
-    'description' => 'Description',
     'visible' => 'Visible',
     'visibility' => 'Visibility',
-    'boycott_status' => 'Boycott status',
-    'parent_category' => 'Parent category',
-    'established_at' => 'Established at',
 
     // ACTIONS
     'add' => 'Add category',
