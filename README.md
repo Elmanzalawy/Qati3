@@ -8,7 +8,6 @@
     - [x] Tests
 - ##### API
     - [x] Sign in using email / password
-    - [ ] Sign in using Socialite
     - [x] Tests
 
 ## Category

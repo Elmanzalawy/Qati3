@@ -28,6 +28,7 @@ return [
     'visibility' => 'Visibility',
     'boycott_status' => 'Boycott status',
     'parent_brand' => 'Parent brand',
+    'categories' => 'Categories',
     'established_at' => 'Established at',
 
     // ACTIONS
