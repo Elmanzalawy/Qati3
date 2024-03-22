@@ -1,10 +1,10 @@
-@section('css')
+@push('css')
 @vite(['resources/scss/brands.scss'])
-@endsection
+@endpush
 <div class="container pt-4">
     <div class="d-flex align-items-center">
         <h2 class="text-dark">{{ __('brand.brands') }}</h2>
-        <a href="{{ route('brands.create') }}" class="ms-auto btn btn-outline-primary">{{ __('brand.add') }}</a>
+        <a href="{{ route('brands.create') }}" class="ms-auto btn btn-outline-primary" wire:navigate>{{ __('brand.add') }}</a>
     </div>
     <div id="brands-filters-row" class=" d-flex flex-row align-items-center justify-content-between my-2 mb-4">
         <span>

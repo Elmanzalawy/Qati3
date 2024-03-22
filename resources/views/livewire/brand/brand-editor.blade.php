@@ -1,8 +1,8 @@
 <div class="container pt-4">
     @include('includes.messages')
     <div class="mb-3 d-flex align-items-center">
-        <a href="{{ route('brands.index') }}">
-            <h3 class="text-dark ">&larr; Brands</h3>
+        <a href="{{ route('brands.index') }}" wire:navigate>
+            <h3 class="text-dark ">&larr; {{ __('brand.brands') }}</h3>
         </a>
         @if($brand && !$brand->is_visible)
             <span class="ms-2 badge text-bg-secondary">Draft</span>
@@ -43,6 +43,20 @@
                                 required>
                         </x-input>
                         </div>
+                        <div class="col-12">
+                            <x-select
+                                id='categories-select'
+                                wire:model='categories'
+                                name='categories'
+                                multiple
+                                label="{{ __('brand.categories') }}"
+                                >
+                                @foreach ($categoriesList as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
+                            </x-select>
+                        </div>
+
                         <div class="col-12" wire:ignore>
                             <hr>
                             <h5 class="mb-3">{{ __('brand.description') }}</h5>
@@ -78,7 +92,7 @@
                     <h6>Details</h6>
                 </div>
                 <div class="card-body">
-                    <div class="my-2">
+                    <div class="mb-3">
                         <x-select id='boycott_status' wire:model='boycott_status' name='boycott_status' label="{{ __('brand.boycott_status') }}" required>
                             <option value="" class="text-muted">Select status..</option>
                             @foreach ($boycott_status_list as $key => $status)

@@ -1,6 +1,6 @@
-@section('css')
+@push('css')
     @vite(['resources/scss/articles.scss'])
-@endsection
+@endpush
 <div class="container pt-5">
     <h1 class="text-dark mb-4">Latest Articles</h1>
     <div id="articles-wrapper" class="row gy-5">

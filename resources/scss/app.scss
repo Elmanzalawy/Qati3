@@ -8,5 +8,16 @@ $dark: $primary-dark;
 $danger: #E4312B;
 // $success: red;
 
+.custom-select-component{
+    position: relative;
+
+    label{
+        color: var(--bs-secondary-color);
+        position: absolute;
+        top: 0.3rem;
+        left: 1rem;
+        z-index: 1;
+    }
+}
 
 @import "bootstrap/scss/bootstrap";

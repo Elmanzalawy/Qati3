@@ -8,8 +8,11 @@
     - [x] Tests
 - ##### API
     - [x] Sign in using email / password
-    - [ ] Sign in using Socialite
     - [x] Tests
+
+## Category
+- [ ] Add categories CRUD functionality with validation
+- [ ] Add categories tests
 
 ## Brand
 - [x] Add brands CRUD functionality

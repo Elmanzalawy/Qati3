@@ -1,6 +1,6 @@
-@section('css')
+@push('css')
 @vite(['resources/scss/articles.scss'])
-@endsection
+@endpush
 <div class="container py-4">
     <h1 class="bold mb-3">{{ $article->title }}</h1>
     <div id="author-details" class="my-4 d-flex align-items-center">

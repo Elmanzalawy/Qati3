@@ -3,6 +3,7 @@
 namespace App\Livewire\Brand;
 
 use App\Models\Brand;
+use App\Models\Category;
 use App\Services\LocaleService;
 use Illuminate\Contracts\View\View;
 use Livewire\Attributes\Layout;
@@ -41,6 +42,10 @@ class BrandEditor extends Component
     public $parent_brand_id;
 
     public $brandsList;
+
+    public $categoriesList;
+
+    public $categories;
 
     public $established_at;
 
@@ -94,12 +99,14 @@ class BrandEditor extends Component
         $this->locale_list = LocaleService::LOCALE_LIST;
         $this->boycott_status_list = Brand::BOYCOTT_STATUSES;
         $this->brandsList = Brand::select('id', "name")->get();
+        $this->categoriesList = Category::select('id', 'name')->get();
 
         if($slug){
             $this->brand = Brand::where('slug', $slug)->firstOrFail();
 
             $name = $this->brand->getTranslations('name');
             $description = $this->brand->getTranslations('description');
+
             $this->fill([
                 'name_en' => $name['en'],
                 'name_ar' => $name['ar'],
@@ -112,16 +119,6 @@ class BrandEditor extends Component
                     'is_visible',
                 ),
             ]);
-            // $this->fill(
-            //     $this->brand->only(
-            //         'name_en' => 'name->en',
-            //         'description',
-            //         'boycott_status',
-            //         'parent_brand_id',
-            //         'established_at',
-            //         'is_visible',
-            //     ),
-            // );
 
             $this->action = 'update';
         }

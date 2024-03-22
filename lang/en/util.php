@@ -14,4 +14,6 @@ return [
     */
 
     'error' => 'An error has occured.',
+    'actions' => 'Actions',
+    'edit' => 'Edit',
 ];

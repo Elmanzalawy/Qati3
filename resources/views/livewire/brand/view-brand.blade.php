@@ -1,8 +1,8 @@
-@section('css')
+@push('css')
 @vite(['resources/scss/brands.scss'])
-@endsection
+@endpush
 <div class="container pt-4">
-    <a href="{{ route('brands.index') }}">
+    <a href="{{ route('brands.index') }}" wire:navigate>
         <h3 class="text-dark mb-4">&larr; Brands</h3>
     </a>
 

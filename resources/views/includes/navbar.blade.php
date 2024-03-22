@@ -8,8 +8,11 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavId">
-            <div class="nav-item me-auto">
+            <div class="nav-item me-2 my-3 my-sm-0">
                 <a class="nav-link" href="{{ route('brands.index') }}" wire:navigate>{{ __('brand.brands') }}</a>
+            </div>
+            <div class="nav-item me-2 my-3 my-sm-0">
+                <a class="nav-link" href="{{ route('categories.index') }}" wire:navigate>{{ __('category.categories') }}</a>
             </div>
             {{-- <form class="d-flex ms-auto my-2 my-lg-0">
                 <input class="form-control me-sm-2" type="text" placeholder="Search">
@@ -17,7 +20,7 @@
             </form> --}}
 
             @auth
-                <div class="nav-item dropdown ms-2">
+                <div class="ms-auto nav-item dropdown ms-2">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ auth()->user()->name }}</a>
                     <div class="dropdown-menu" aria-labelledby="dropdownId">
                         <a class="dropdown-item" href="{{ route('profile') }}" wire:navigate>Profile</a>
@@ -25,7 +28,7 @@
                     </div>
                 </div>
             @else
-                <a href="{{ route('auth') }}" class="my-2 my-sm-0 btn btn-primary" wire:navigate>{{ __('Login') }}</a>
+                <a href="{{ route('auth') }}" class="ms-auto my-2 my-sm-0 btn btn-primary" wire:navigate>{{ __('Login') }}</a>
             @endauth
         </div>
   </div>
